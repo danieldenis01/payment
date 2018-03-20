@@ -68,6 +68,13 @@ var payment =
 	    cvcLength: [3],
 	    luhn: true
 	  }, {
+	    type: 'hipercard',
+	    pattern: /^(384100|384140|384160|606282|637095|637568|60(?!11))/,
+	    format: defaultFormat,
+	    length: [14, 15, 16, 17, 18, 19],
+	    cvcLength: [3],
+	    luhn: true
+	  }, {
 	    type: 'dinersclub',
 	    pattern: /^(36|38|30[0-5])/,
 	    format: /(\d{1,4})(\d{1,6})?(\d{1,4})?/,
@@ -125,7 +132,7 @@ var payment =
 	    luhn: true
 	  }, {
 	    type: 'elo',
-	    pattern: /^(4011|438935|45(1416|76|7393)|50(4175|6699|67|90[4-7])|63(6297|6368))/,
+	    pattern: /^401178|^401179|^431274|^438935|^451416|^457393|^457631|^457632|^504175|^627780|^636297|^636369|^(506699|5067[0-6]\d|50677[0-8])|^(50900\d|5090[1-9]\d|509[1-9]\d{2})|^65003[1-3]|^(65003[5-9]|65004\d|65005[0-1])|^(65040[5-9]|6504[1-3]\d)|^(65048[5-9]|65049\d|6505[0-2]\d|65053[0-8])|^(65054[1-9]|6505[5-8]\d|65059[0-8])|^(65070\d|65071[0-8])|^65072[0-7]|^(65090[1-9]|65091\d|650920)|^(65165[2-9]|6516[6-7]\d)|^(65500\d|65501\d)|^(65502[1-9]|6550[3-4]\d|65505[0-8])/,
 	    format: defaultFormat,
 	    length: [16],
 	    cvcLength: [3],
@@ -226,7 +233,9 @@ var payment =
 	      upperLengths = card.length;
 	    }
 	    if (maxLength) {
-	      upperLengths = [Math.min(maxLength, upperLengths.slice(0).pop())];
+	      upperLengths = upperLengths.filter(function(x) {
+	        return x <= maxLength;
+	      });
 	    }
 	    for (i = j = 0, len = upperLengths.length; j < len; i = ++j) {
 	      upperLength = upperLengths[i];
@@ -633,6 +642,7 @@ var payment =
 	    QJ.on(el, 'keydown', formatBackCardNumber);
 	    QJ.on(el, 'keyup blur', setCardType);
 	    QJ.on(el, 'paste', reFormatCardNumber);
+	    QJ.on(el, 'input', reFormatCardNumber);
 	    return el;
 	  };
 
