@@ -4,6 +4,22 @@ defaultFormat = /(\d{1,4})/g
 
 cards = [
   {
+      type: 'elo'
+      pattern: /^401178|^401179|^431274|^438935|^451416|^457393|^457631|^457632|^504175|^627780|^636297|^636369|^636368|^(506699|5067[0-6]\d|50677[0-8])|^(50900\d|5090[1-9]\d|509[1-9]\d{2})|^65003[1-3]|^(65003[5-9]|65004\d|65005[0-1])|^(65040[5-9]|6504[1-3]\d)|^(65048[5-9]|65049\d|6505[0-2]\d|65053[0-8])|^(65054[1-9]|6505[5-8]\d|65059[0-8])|^(65070\d|65071[0-8])|^65072[0-7]|^(65090[1-9]|65091\d|650920)|^(65165[2-9]|6516[6-7]\d)|^(65500\d|65501\d)|^(65502[1-9]|6550[3-4]\d|65505[0-8])|^(65092[1-9]|65097[0-8])/,
+      format: defaultFormat
+      length: [16]
+      cvcLength: [3]
+      luhn: true
+  }
+  {
+      type: 'visa'
+      pattern: /^4/
+      format: defaultFormat
+      length: [13, 16, 19]
+      cvcLength: [3]
+      luhn: true
+  }
+  {
       type: 'amex'
       pattern: /^3[47]/
       format: /(\d{1,4})(\d{1,6})?(\d{1,5})?/
@@ -12,24 +28,16 @@ cards = [
       luhn: true
   }
   {
-      type: 'dankort',
-      pattern: /^5019/,
-      format: defaultFormat,
-      length: [16],
-      cvcLength: [3],
+      type: 'mastercard'
+      pattern: /^(5[1-5]|677189)|^(222[1-9]|2[3-6]\d{2}|27[0-1]\d|2720)/
+      format: defaultFormat
+      length: [16]
+      cvcLength: [3]
       luhn: true
   }
   {
-    type: 'elo'
-    pattern: /^401178|^401179|^431274|^438935|^451416|^457393|^457631|^457632|^504175|^627780|^636297|^636369|^636368|^(506699|5067[0-6]\d|50677[0-8])|^(50900\d|5090[1-9]\d|509[1-9]\d{2})|^65003[1-3]|^(65003[5-9]|65004\d|65005[0-1])|^(65040[5-9]|6504[1-3]\d)|^(65048[5-9]|65049\d|6505[0-2]\d|65053[0-8])|^(65054[1-9]|6505[5-8]\d|65059[0-8])|^(65070\d|65071[0-8])|^65072[0-7]|^(65090[1-9]|65091\d|650920)|^(65165[2-9]|6516[6-7]\d)|^(65500\d|65501\d)|^(65502[1-9]|6550[3-4]\d|65505[0-8])|^(65092[1-9]|65097[0-8])/,
-    format: defaultFormat
-    length: [16]
-    cvcLength: [3]
-    luhn: true
-  }
-  {
       type: 'hipercard',
-      pattern: /^(384100|384140|384160|606282|637095|637568|60(?!11))/,
+      pattern: /^(6\d{5}|384)/,
       format: defaultFormat,
       length: [14..19],
       cvcLength: [3],
@@ -37,10 +45,18 @@ cards = [
   }
   {
       type: 'dinersclub'
-      pattern: /^(36|38|30[0-5])/
+      pattern: /^(36|38[0-3]|38[5-9]|30[0-5])/
       format: /(\d{1,4})(\d{1,6})?(\d{1,4})?/
       length: [14]
       cvcLength: [3]
+      luhn: true
+  }
+  {
+      type: 'dankort',
+      pattern: /^5019/,
+      format: defaultFormat,
+      length: [16],
+      cvcLength: [3],
       luhn: true
   }
   {
@@ -76,14 +92,6 @@ cards = [
       luhn: true
   }
   {
-      type: 'mastercard'
-      pattern: /^(5[1-5]|677189)|^(222[1-9]|2[3-6]\d{2}|27[0-1]\d|2720)/
-      format: defaultFormat
-      length: [16]
-      cvcLength: [3]
-      luhn: true
-  }
-  {
       type: 'unionpay'
       pattern: /^62/
       format: defaultFormat
@@ -97,14 +105,6 @@ cards = [
       format: defaultFormat,
       length: [16],
       cvcLength: [3],
-      luhn: true
-  }
-  {
-      type: 'visa'
-      pattern: /^4/
-      format: defaultFormat
-      length: [13, 16, 19]
-      cvcLength: [3]
       luhn: true
   }
 ]
