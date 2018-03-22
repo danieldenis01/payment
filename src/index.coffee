@@ -37,7 +37,15 @@ cards = [
   }
   {
       type: 'hipercard',
-      pattern: /^(6\d{5}|384)/,
+      pattern: /^(6\d{5})/,
+      format: defaultFormat,
+      length: [14..16],
+      cvcLength: [3],
+      luhn: true
+  }
+  {
+      type: 'hipercard',
+      pattern: /^(384)/,
       format: defaultFormat,
       length: [14..19],
       cvcLength: [3],
