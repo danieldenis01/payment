@@ -162,6 +162,18 @@ Example:
 Payment.fns.cardType('4242 4242 4242 4242'); //=> 'visa'
 ```
 
+### Payment.fns.cardInfo(number)
+
+Returns a card info object that include `type`, `cvcLength`, `format`, `type`...
+
+The function will return `null` if the card type can't be determined.
+
+Example:
+
+``` javascript
+Payment.fns.cardInfo('4242 4242 4242 4242');
+```
+
 ### Payment.fns.cardExpiryVal(string) and Payment.cardExpiryVal(el)
 
 Parses a credit card expiry in the form of MM/YYYY, returning an object containing the `month` and `year`. Shorthand years, such as `13` are also supported (and converted into the longhand, e.g. `2013`).

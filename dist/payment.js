@@ -581,6 +581,12 @@ var payment =
 	      }
 	      return ((ref = cardFromNumber(num)) != null ? ref.type : void 0) || null;
 	    },
+	    cardInfo: function(num) {
+	      if (!num) {
+	        return null;
+	      }
+	      return cardFromNumber(num);
+	    },
 	    formatCardNumber: function(num) {
 	      var card, groups, ref, upperLength;
 	      card = cardFromNumber(num);

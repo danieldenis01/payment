@@ -460,6 +460,9 @@ class Payment
     cardType: (num) ->
       return null unless num
       cardFromNumber(num)?.type or null
+    cardInfo: (num) ->
+      return null unless num
+      cardFromNumber(num)
     formatCardNumber: (num) ->
       card = cardFromNumber(num)
       return num unless card
