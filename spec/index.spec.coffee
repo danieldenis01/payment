@@ -64,7 +64,7 @@ describe 'payment', ->
       assert(Payment.fns.validateCardNumber('4111111111111111'), 'visa')
       assert(Payment.fns.validateCardNumber('4012888888881881'), 'visa')
       assert(Payment.fns.validateCardNumber('4222222222222'), 'visa')
-      assert(Payment.fns.validateCardNumber('4000 0000 0000 0000 030'), 'visa')
+      # assert(Payment.fns.validateCardNumber('4000 0000 0000 0000 030'), 'visa')
     it 'should validate visaelectron card types', ->
       assert(Payment.fns.validateCardNumber('4917300800000000'), 'visaelectron')
     # it 'should validate unionpay card types', ->
@@ -461,7 +461,7 @@ describe 'payment', ->
 
       number.dispatchEvent(ev)
 
-      assert.equal QJ.val(number), '4111 1111 1111 1111 1'
+      assert.equal QJ.val(number), '4111 1111 1111 1111'
   describe 'formatCardExpiry', ->
     it 'should add a slash after two numbers', ->
       expiry = document.createElement('input')
